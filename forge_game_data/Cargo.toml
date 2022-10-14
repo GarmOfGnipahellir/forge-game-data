@@ -1,0 +1,14 @@
+[package]
+name = "forge-game-data"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["derive"]
+derive = []
+
+[dependencies]
+forge_game_data_derive = { path = "../forge_game_data_derive" }
+combine = "4.6"
