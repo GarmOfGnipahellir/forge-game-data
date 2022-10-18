@@ -1,5 +1,5 @@
 [package]
-name = "forge-game-data"
+name = "forge_game_data"
 version = "0.1.0"
 edition = "2021"
 

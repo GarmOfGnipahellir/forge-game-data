@@ -2,7 +2,7 @@ extern crate proc_macro;
 
 use proc_macro::TokenStream;
 use quote::quote;
-use syn::{Ident, Lit, Meta, NestedMeta};
+use syn::{Lit, Meta, NestedMeta};
 
 #[proc_macro_derive(Entity, attributes(entity))]
 pub fn entity_derive(input: TokenStream) -> TokenStream {
@@ -29,13 +29,6 @@ pub fn entity_derive(input: TokenStream) -> TokenStream {
         for nested_attr in list.nested.iter() {
             match nested_attr {
                 NestedMeta::Meta(Meta::NameValue(name_value)) => {
-                    let name_value =
-                        if let NestedMeta::Meta(Meta::NameValue(name_value)) = nested_attr {
-                            name_value
-                        } else {
-                            continue;
-                        };
-
                     let ident = if let Some(ident) = name_value.path.get_ident() {
                         ident
                     } else {
@@ -104,13 +97,4 @@ pub fn entity_derive(input: TokenStream) -> TokenStream {
         }
     };
     gen.into()
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
 }
